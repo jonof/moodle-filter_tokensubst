@@ -21,6 +21,7 @@ class filter_tokensubst extends moodle_text_filter {
         parent::__construct($context, $localconfig);
 
         $alltokens = array();
+        $showtokens = false;
 
         if ($context instanceof context_module) {
             // Import the tokens from the parent (course) context.
@@ -32,10 +33,26 @@ class filter_tokensubst extends moodle_text_filter {
             if (!empty(self::$parentconfigs[$parentctx->id]['tokens'])) {
                 $alltokens = array_merge($alltokens, self::parse_config(self::$parentconfigs[$parentctx->id]['tokens'], $errors));
             }
+            if (!empty(self::$parentconfigs[$parentctx->id]['showtokens'])) {
+                $showtokens = true;
+            }
         }
 
         if (!empty($localconfig['tokens'])) {
             $alltokens = array_merge($alltokens, self::parse_config($localconfig['tokens'], $errors));
+        }
+        if (!empty($localconfig['showtokens'])) {
+            $showtokens = true;
+        }
+
+        if ($showtokens && has_capability('moodle/filter:manage', $context)) {
+            foreach ($alltokens as $token => $text) {
+                // Invalidate the token's opening sigil with a zero-width space to prevent
+                // repeat filterings expanding the label.
+                $tokenlabel = str_replace('{{{', '{{{&#x200B;', $token);
+                $alltokens[$token] = "<em>{$tokenlabel}</em>";
+            }
+            unset($text);
         }
 
         if ($alltokens) {

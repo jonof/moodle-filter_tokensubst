@@ -26,8 +26,9 @@ class tokensubst_filter_local_settings_form extends filter_local_settings_form {
             }
         }
 
-
         $mform->addElement('textarea', 'tokens', get_string('tokens', 'filter_tokensubst'), array('rows' => 10, 'cols' => 50));
+
+        $mform->addElement('checkbox', 'showtokens', get_string('showtokens', 'filter_tokensubst'));
     }
 
     public function validation($data, $files) {
@@ -55,6 +56,9 @@ class tokensubst_filter_local_settings_form extends filter_local_settings_form {
         unset($data['submitbutton']);
         if (isset($data['tokens'])) {
             $data['tokens'] = rtrim($data['tokens']);
+        }
+        if (!isset($data['showtokens'])) {
+            $data['showtokens'] = 0;
         }
         parent::save_changes($data);
     }

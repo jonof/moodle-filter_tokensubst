@@ -9,6 +9,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['showtokens'] = 'Show tokens for editors';
+$string['showtokens_help'] = 'Allow users with the `moodle/filter:manage` capability to see the raw tokens un-replaced.';
 $string['erroremptytoken'] = 'No token name before the \'=\' on line {$a}.';
 $string['errorinvalidtokenchar'] = 'Invalid token character found on line {$a}.';
 $string['errornoseparator'] = 'No \'=\' found on line {$a}.';
