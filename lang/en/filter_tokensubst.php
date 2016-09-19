@@ -17,8 +17,8 @@ $string['errornoseparator'] = 'No \'=\' found on line {$a}.';
 $string['filtername'] = 'Token substitution';
 $string['introtext'] = 'This filter will replace placeholders (tokens) in text with substitutes you define here.
 
-Tokens are represented by `{{{` + `token-word` + `}}}` and are matched without regards to case. `token-word` may contain any sequence of letters, numbers, underscores, or hyphens. e.g. `{{{ASSIGNMENT_1_DUE_DATE}}}`, `{{{email-address}}}`
+Tokens are represented by `{{{` + *token-word* + `}}}` and are matched without regards to case. *token-word* may contain any sequence of letters, numbers, underscores, or hyphens. e.g. `{{{ASSIGNMENT_1_DUE_DATE}}}`, `{{{email-address}}}`
 
-Define each token on a new line with the format: `token-word = expanded text`. Leading and traling spaces will be trimmed, and the expanded text ends at the newline.';
+Define each token on a new line with the format: `token-word = expanded text`. Leading and traling spaces will be trimmed, and the expanded text ends at the newline. The expanded text will be transformed to safe HTML, so you do not need to substitute `&amp;` for the _&_ character.';
 $string['parenttokens'] = 'Tokens at course level';
 $string['tokens'] = 'Tokens';

@@ -91,7 +91,7 @@ class filter_tokensubst extends moodle_text_filter {
                 continue;
             }
 
-            $tokens['{{{' . $token . '}}}'] = $text;
+            $tokens['{{{' . $token . '}}}'] = s($text);
         }
 
         return $tokens;
